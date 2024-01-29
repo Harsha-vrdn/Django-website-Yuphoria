@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+
+{% block title %}Contact Us{% endblock %}
+
+{% block content %}
+    <h2>Contact Form</h2>
+    <div class="container1">
+      <form method="post">
+        {% csrf_token %}
+        <!-- Your contact form fields go here -->
+        <div>
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" />
+
+          <label for="phone">Phone number</label>
+          <input type="text" id="phone" name="phone" placeholder="9999999999" />
+
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="email@email.com" />
+
+          <label for="subject">Subject</label>
+          <textarea id="subject" name="subject" placeholder="Write something.." style="height:150px"></textarea>
+        </div>
+
+        <div>
+          <button type="submit">Submit</button>
+        </div>
+    </form>
+    </div>
+{% endblock %}
+
+{% block extra_css %}
+    <style>
+        /* Additional styles specific to the contact page */
+        /* Add your styles here */
+        label {
+          display: block;
+          margin-bottom: 8px;
+          color: #00ff00; /* Neon green text */
+        }
+        .container1 {
+          border-radius: 5px;
+          background-color: #001f00; /* Dark green background */
+          padding: 20px;
+          max-width: 400px; /* Set a maximum width for the form container */
+          margin: 50px auto; /* Center the form on the page */
+        }
+        input[type='text'],
+        input[type='email'],
+        input[type='tel'],
+        textarea {
+          width: calc(100% - 24px);
+          padding: 10px;
+          border: 1px solid #00ff00; /* Neon green border */
+          border-radius: 4px;
+          box-sizing: border-box;
+          margin-top: 6px;
+          margin-bottom: 16px;
+          background-color: black; /* Black background */
+          color: #00ff00; /* Neon green text */
+        }
+      
+      /* When moving the mouse over the submit button, add a darker green color */
+      input[type='submit']:hover {
+        background-color: #009900;
+      }
+      textarea {
+        width: calc(100% - 24px);
+        padding: 10px;
+        border: 1px solid #00ff00; /* Neon green border */
+        border-radius: 4px;
+        box-sizing: border-box;
+        margin-top: 6px;
+        margin-bottom: 16px;
+        background-color: black; /* Black background */
+        color: #00ff00; /* Neon green text */
+      }
+      button{
+        background-color: rgb(51, 255, 0);
+        border: 1px solid #00ff00; /* Neon green border */
+        color: #000000;
+        width: calc(100% - 24px);
+        height: 30px;
+        border-radius: 4px;
+      }
+    </style>
+{% endblock %}

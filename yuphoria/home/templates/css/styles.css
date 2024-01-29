@@ -1,0 +1,53 @@
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+}
+
+.container {
+    display: flex;
+}
+
+.sidebar {
+    height: 100%;
+    width: 60px;
+    position: fixed;
+    background-color: black;
+    color: white;
+    padding-top: 20px;
+    overflow: hidden;
+    transition: width 0.3s;
+}
+
+.sidebar:hover {
+    width: 250px;
+}
+
+.sidebar h2 {
+    text-align: center;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    text-align: center;
+}
+
+.sidebar a {
+    display: block;
+    text-decoration: none;
+    color: white;
+    padding: 10px;
+}
+
+.content {
+    flex: 1;
+    padding: 16px;
+    transition: margin-left 0.3s;
+}
+
+.container:hover .content {
+    margin-left: 250px;
+}
