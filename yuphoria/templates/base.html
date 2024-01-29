@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,10 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}My Website{% endblock %}</title>
     <!-- Include Font Awesome stylesheet -->
+    
     <style>
+        @font-face {
+            font-family: 'custfont';
+            src: url('{% static "fonts/CFDots-Regular.ttf" %}');
+        }
         body {
             margin: 0;
-            font-family: 'Arial', sans-serif;
+            font-family: 'custfont', sans-serif;
+            font-size: 18px;
             background-color: black;
             color: white;
         }
@@ -38,7 +46,7 @@
         .sidebar h2 {
             text-align: center;
             color: rgb(110, 255, 43);
-            text-shadow: 0 0 10px rgba(0, 255, 0, 0.8); /* Glowing text effect */
+            
         }
         
         .sidebar ul {
