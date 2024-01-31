@@ -9,23 +9,26 @@
 <h2>Morse Code Converter</h2>
 <div class = "container-main">
 
-<form method="post" class = "form-container">
-    {% csrf_token %}
-    <div>
-        {{ form.as_p }}
-    </div>
-    <button type="submit">Convert to Morse Code</button>
-</form>
+    <form method="post" class="form-container">
+        {% csrf_token %}
+        <div>
+            {{ form.as_p }}
+        </div>
+        <button type="submit" value="generate">Convert to Morse Code</button>
+        {% if input_text %}
+            <div class="result-container">
+                <h2>Result</h2>
+                <p><strong>Input Text:</strong> {{ input_text }}</p>
+                <p><strong>Morse Code:</strong></p>
+                <pre>{{ morse_code }}</pre>
+                <button type="submit" name="action" value="BuyNow">Buy Now</button>
+                <button type="submit" name="action" value="AddToCart">Add to cart</button>
+            </div>
+        {% endif %}
+        
+    </form>
+    
 
-{% if input_text %}
-<div class="result-container">
-    <h2>Result</h2>
-<p><strong>Input Text:</strong> {{ input_text }}</p>
-<p><strong>Morse Code:</strong></p>
-<pre>{{ morse_code }}</pre>
-</div>
-</div>
-{% endif %}
 {% endblock %}
 
 

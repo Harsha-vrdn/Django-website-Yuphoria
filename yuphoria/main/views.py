@@ -1,6 +1,7 @@
 # morsecode/views.py
 from django.shortcuts import render
 from .forms import MorseCodeForm
+from cart.models import CartItem
 
 MORSE_CODE_DICT = {
     'A': '.-', 'B': '-...', 'C': '-.-.', 'D': '-..', 'E': '.',
@@ -27,14 +28,26 @@ def text_to_morse(text):
 def morsecode_converter(request):
     input_text = ''
     morse_code = ''
+    form = MorseCodeForm()
 
     if request.method == 'POST':
         form = MorseCodeForm(request.POST)
+        name = ""
+
         if form.is_valid():
             input_text = form.cleaned_data['text_input']
             morse_code = text_to_morse(input_text)
-    else:
-        form = MorseCodeForm()
+            name = input_text
+            price = 10
+
+            if request.POST.get('action') == 'AddToCart':
+                CartItem.objects.create(
+                    user=request.user, product_name=f"{name} Morse Code", price=price
+                )
+                return render(request, 'main.html', {'form': form, 'input_text': input_text, 'morse_code': morse_code})
 
     return render(request, 'main.html', {'form': form, 'input_text': input_text, 'morse_code': morse_code})
+
+
+
 
