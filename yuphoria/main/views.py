@@ -2,6 +2,7 @@
 from django.shortcuts import render
 from .forms import MorseCodeForm
 from cart.models import CartItem
+from django.contrib import messages
 
 MORSE_CODE_DICT = {
     'A': '.-', 'B': '-...', 'C': '-.-.', 'D': '-..', 'E': '.',
@@ -44,6 +45,7 @@ def morsecode_converter(request):
                 CartItem.objects.create(
                     user=request.user, product_name=f"{name} Morse Code", price=price
                 )
+                messages.success(request, 'Item added to cart successfully!')
                 return render(request, 'main.html', {'form': form, 'input_text': input_text, 'morse_code': morse_code})
 
     return render(request, 'main.html', {'form': form, 'input_text': input_text, 'morse_code': morse_code})

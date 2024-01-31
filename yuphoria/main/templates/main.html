@@ -7,7 +7,20 @@
 
 {% block content %}
 <h2>Morse Code Converter</h2>
+
+<div>
+    {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+                <div class="{{ message.tags }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+</div>
 <div class = "container-main">
+
 
     <form method="post" class="form-container">
         {% csrf_token %}
@@ -94,6 +107,17 @@
     width: calc(100% - 24px);
     height: 30px;
     border-radius: 4px;
+    }
+    .messages {
+        margin-bottom: 10px;
+    }
+    
+    .success {
+        color: #00ff00; /* Neon green text for success messages */
+    }
+    
+    .error {
+        color: #ff0000; /* Red text for error messages */
     }
     </style>
   
