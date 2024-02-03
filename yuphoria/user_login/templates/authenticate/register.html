@@ -1,19 +1,92 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Register</title>
-  </head>
-  <body>
-    {% if form.errors %}
-      <p>there was an error please try again</p>
-    {% endif %}
-    <h1>Register</h1>
-    <form action="{% url 'register_user' %}" method="post">
-      {% csrf_token %}
-      {{ form }}
-      <button type="submit">Register</button>
-    </form>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register</title>
+
+  <style>
+    @font-face {
+      font-family: 'custfont';
+      src: url('{% static "fonts/CFDots-Regular.ttf" %}');
+    }
+
+    body {
+      background-color: black;
+      color: limegreen;
+      font-family: custfont;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      width: 300px;
+      padding: 20px;
+      background-color: rgba(0, 128, 0, 0.3); /* Lighter green background */
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 128, 0, 0.8); /* Glowing effect */
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    input {
+      width: calc(100% - 16px);
+      padding: 8px;
+      margin-bottom: 16px;
+      box-sizing: border-box;
+      border: 2px solid transparent; /* Transparent border initially */
+      transition: border-color 0.5s ease; /* Smooth transition for border color */
+    }
+
+    input:focus {
+      border-color: limegreen; /* Border color on focus */
+    }
+
+    button {
+      background-color: limegreen;
+      color: black;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: darkgreen;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container glow">
+  {% if form.errors %}
+    <p>There was an error. Please try again.</p>
+  {% endif %}
+  <h1>Register</h1>
+  <form action="{% url 'register_user' %}" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <button type="submit">Register</button>
+  </form>
+</div>
+
+</body>
 </html>
